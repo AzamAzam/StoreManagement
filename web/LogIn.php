@@ -27,7 +27,7 @@ if (isset($_REQUEST["loginbutton"]) == true) {
 <body>
 <div class="login-page">
     <div class="form">
-        <form class="login-form" method="post">
+        <form class="login-form" method="get">
             <input type="text" name="uname" placeholder="username" value="<?php echo $uname ?>" required/>
             <input type="password" name="pass" placeholder="password" required/>
             <input type="submit" class="button" name="loginbutton" value="login"/>
