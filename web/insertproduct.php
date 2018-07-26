@@ -1,17 +1,9 @@
 <?php
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "sms";
+ include 'connect.php'
+ ?>
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
-
+<?php
 // get JSON data
 $data = file_get_contents("php://input");
 // convert json data to array
@@ -28,12 +20,12 @@ $base_to_php = explode(',', $baseFromJavascript);
 $data = base64_decode($base_to_php[1]);
 
 $imgName=time();
-$filepath = "images/". $imgName . ".png";
+$filepath = "../img/DBImg". $imgName . ".png";
 
 // Save the image in a defined path
 file_put_contents($filepath,$data);
 
-$sql = "INSERT INTO products(p_name,p_price,p_detail,p_image) VALUES('$p_name','$p_price','$p_detail','$filepath')";
+$sql = "INSERT INTO product(p_name,p_price,p_detail,p_image) VALUES('$p_name','$p_price','$p_detail','$filepath')";
 
 if($conn->query($sql) === TRUE){
   echo "success";

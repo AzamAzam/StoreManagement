@@ -1,15 +1,20 @@
-<?
-require 'connect.php'
-?>
 <?php
-//database query
-$sql = @mysql_query("select * from product");
- 
-$rows = array();
-while($r = mysql_fetch_assoc($sql)) {
-  $rows[] = $r;
+
+require 'connect.php';
+
+$sql = "SELECT * FROM product";
+
+$result = $conn->query($sql);
+
+if($result->num_rows > 0){
+ $result_array = Array();
+    while($row = $result->fetch_assoc()) {
+        $result_array[] = $row;
+    }
+   $json_array = json_encode($result_array);
+   echo $json_array;
 }
- 
-//echo result as json
-echo json_encode($rows);
+else echo "No results found";
+
+$conn->close();
 ?>
