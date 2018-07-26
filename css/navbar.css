@@ -92,7 +92,7 @@ li a:hover:not(.active) {
 }
 
 .footer {
-    position: fixed;
+    position: relative;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -167,8 +167,21 @@ li a:hover:not(.active) {
     margin: 50px;
 }
 
-
 .tb {
     padding: 10px;
 
+}
+
+.prod {
+    display: block;
+    border: 1px solid greenyellow;
+    width: 500px;
+    height: 200px;
+    background-color: slategrey;
+    margin: auto;
+    padding-bottom: 10px;
+}
+.prod img {
+    height: 150px;
+    width: 150px;
 }

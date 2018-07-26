@@ -4,6 +4,8 @@ include 'nave.php'
 ?>
 <script src="../js/jqueryimg.js"></script>
 <script src="../js/product.js"></script>
+
+
 <div align="center">
     <table class="tb">
         <tr>

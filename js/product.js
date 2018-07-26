@@ -34,24 +34,33 @@ $(document).ready(function () {
             show(result);
 
         });
+        //LoadProductData();/*
     });
     $('#form').on('change', '#image', function () {
         loadFilePreview();
     });
+
 });
 
 
 function show(record) {
-    var table = "";
-    for (var i = 0; i < record.length; i++) {
-        table += "<td class='data'>" + record[i].p_name + "</td>";
-        table += "<td class='data'>" + record[i].p_price + "</td>";
-        table += "<td class='data'>" + record[i].p_detail + "</td>";
-        table += "<td class='data'> <img src=" + record[i].p_image + " + height=250px width=500px></td>";
-        table += "</tr>";
-    }
 
-    document.getElementById('res').innerHTML = table;
+    $("#res").html('');
+    for (var i = 0; i < record.length; i++) {
+
+        var product = `<div class="prod"><div style="display: inline-block">
+        <img src=` + record[i].p_image + `  />
+        </div>
+
+        <div style="display: inline-block">
+        Product Id:` + record[i].id + ` <br />
+        Name:` + record[i].p_name + ` <br />
+        Price:` + record[i].p_price + `<br />
+        Created On ` + record[i].createdon + `<b> By</b> <span style="color:blue">` + record[i].createdby + `</span>
+        </div></div>`
+
+        $("#res").append(product);
+    }
     $("#form").html('');
 }
 
@@ -86,7 +95,7 @@ function loadFilePreview() {
 }
 
 function PostProduct() {
-    if (!CheckInputs()) return ;
+    if (!CheckInputs()) return;
     $.ajax({
         url: "insertproduct.php",
         // send the base64 post parameter
@@ -107,31 +116,29 @@ function PostProduct() {
     });
     return false;
 }
-function CheckInputs()
-{
-    var  message = "Enter Valid Product ";
-    var  flag =true;
-    if ( $("#name").val().trim()<=0)
-    {
-        if (!flag) message+=', ';
-        message+="Name";
-        flag=false;
+
+function CheckInputs() {
+    var message = "Enter Valid Product ";
+    var flag = true;
+    if ($("#name").val().trim() <= 0) {
+        if (!flag) message += ', ';
+        message += "Name";
+        flag = false;
     }
-    if ($("#price").val()<=0||!$("#price").val())
-    {
-        if (!flag) message+=', ';
-        message+="Price";
-        flag=false;
+    if ($("#price").val() <= 0 || !$("#price").val()) {
+        if (!flag) message += ', ';
+        message += "Price";
+        flag = false;
     }
-    if (!$("#image").val())
-    {
-        if (!flag) message+=', ';
-        message+="Image";
-        flag=false;
+    if (!$("#image").val()) {
+        if (!flag) message += ', ';
+        message += "Image";
+        flag = false;
     }
     if (!flag) alert(message);
-    return  flag;
+    return flag;
 }
+
 function resetform() {
     $("#name").val('');
     $("#price").val('');
