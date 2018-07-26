@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,18 +13,15 @@
     </ul>
 </div>
 <div id="topnav">
+    <nav>
     <ul>
         <li><img src="../img/logo.png" alt="logo" style="float:left"></li>
-        <li><a href="index.php" class="active">Home</a></li>
-        <li><a href="career.php">Careers</a></li>
-        <li><a href="#about">Products</a></li>
-        <li><a href="about.php">About</a></li>
-        <?php if (isset($_SESSION['user']))
-            echo '<li><a style="float:right" href="logout.php">Log Out</a>';
-        else
-            echo '<li><a style="float:right" href="LogIn.php">Log in</a>' ?>
-
+        <li><a href="welcome.php" class="active">Home</a></li>
+        <li><a href="products.php">Manage Products</a></li>
+        <li><a href="users.php">Manage Users</a></li>
+        <li><a style="float:right" href="Logout.php">Logout</a>
     </ul>
+    </nav>
 </div>
 <br/>
 

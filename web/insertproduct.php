@@ -10,7 +10,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
-} 
+}
 
 // get JSON data
 $data = file_get_contents("php://input");
@@ -27,17 +27,17 @@ $base_to_php = explode(',', $baseFromJavascript);
 // the 2nd item in the base_to_php array contains the content of the image
 $data = base64_decode($base_to_php[1]);
 
-$imgName=time();
-$filepath = "images/". $imgName . ".png";
+$imgName = time();
+$filepath = "images/" . $imgName . ".png";
 
 // Save the image in a defined path
-file_put_contents($filepath,$data);
+file_put_contents($filepath, $data);
 
 $sql = "INSERT INTO products(p_name,p_price,p_detail,p_image) VALUES('$p_name','$p_price','$p_detail','$filepath')";
 
-if($conn->query($sql) === TRUE){
-  echo "success";
-}else echo FALSE;
+if ($conn->query($sql) === TRUE) {
+    echo "success";
+} else echo FALSE;
 
 $conn->close();
 ?>
