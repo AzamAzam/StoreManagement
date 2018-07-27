@@ -26,11 +26,11 @@ require 'ManagerTest.php';
         <li><img src="../img/logo.png" alt="logo" style="float:left"></li>
         <li><a href="UserIndex.php" class="active">Home</a></li>
         <li>
-            <?php $user=$_SESSION['user'];
-            if ($user['role']=='Admin')
+            <?php $user = $_SESSION['user'];
+            if ($user['role'] == 'Admin')
                 echo '<a href="ManageUser.php">Manage Users</a>' ?> </li>
         <li><a href="ManageProduct.php">Manage Products</a></li>
-        <li><a style="float:right" href="logout.php">Logout</a></li>
+    <?php include 'user.php'?>
     </ul>
 </div>
 <br><br><br><br>

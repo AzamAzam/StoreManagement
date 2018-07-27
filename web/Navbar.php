@@ -26,12 +26,8 @@
         <li><a href="CustomerProduct.php">Products</a></li>
         <li><a href="about.php">About</a></li>
         <?php
-
-         if (!isset($_SESSION['user']))
-            echo'<li><a style="float:right" href="LogIn.php">Log in</a></li>';
-        else
-            echo '<li><a style="float:right" href="logout.php">Logout</a></li>'
-        ?>
+        include 'user.php';
+ ?>
     </ul>
 </div>
 <br/>

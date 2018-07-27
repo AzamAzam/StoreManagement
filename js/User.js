@@ -21,12 +21,18 @@ function checkAndAddUser() {
 }
 
 function handlePostRequest() {
-    checkAndAddUser();
+    if ($("#username").val().trim()) {
+      //  alert($("#username").val().trim());
+        checkAndAddUser();
+        $("#username").val('');
+        $("#userpass").val('');
+    }
+    else alert('Please Enter valid username');
 }
 
 function getFormData() {
     var data = {
-        name: document.getElementById("adduser").value,
+        name: document.getElementById("username").value,
         password: document.getElementById("userpass").value,
         role: "Manager"
     };
@@ -56,7 +62,7 @@ $(document).ready(function () {
         $.get("getUsers.php", function (data) {
             //      // Display the returned data in browser
             var result = JSON.parse(data);
-            console.log(data +"\n"+ result );
+            console.log(data + "\n" + result);
             showUser(result);
         });
 
@@ -67,9 +73,9 @@ $(document).ready(function () {
 <div class="form">
 <table class="login-form">
     <tr>
-        <input type="text" id="adduser" placeholder="username" required><br>
+        <input type="text" id="username" placeholder="username" required><br>
         <input type="password" id="userpass" placeholder="Password" required>
-        <input type="submit" onclick="handlePostRequest()" class="button" name="add" value="ADD"/>
+        <input type="submit" onclick="handlePostRequest()" class="button"  name="add" value="ADD"/>
     </tr>
 </table>
 </div>
