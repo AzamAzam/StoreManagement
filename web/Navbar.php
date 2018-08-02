@@ -27,7 +27,7 @@
         <li><a href="about.php">About</a></li>
         <?php
         include 'user.php';
- ?>
+        ?>
     </ul>
 </div>
 <br/>

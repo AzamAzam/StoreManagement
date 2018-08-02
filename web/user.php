@@ -4,7 +4,6 @@ if (!isset($_SESSION['user'])) {
     <li><a style="float:right" href="LogIn.php">Log in</a></li>
     <?php
 }
-
 if (isset($_SESSION['user'])) {
     ?>
     <li>
